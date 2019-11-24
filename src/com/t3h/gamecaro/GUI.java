@@ -7,26 +7,24 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Random;
 
 public class GUI extends JFrame  implements Constants{
 
-    private PlayPanel playPanel;
+    private PlayWithCom playWithCom;
 
     public GUI(){
-        playPanel = new PlayPanel();
+        playWithCom = new PlayWithCom();
         this.setSize(W_F,H_F);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(this);
         this.setLayout(null);
         this.setResizable(false);
         this.setUndecorated(true);
+        this.setIconImage(getIcon("logo.png").getImage());
+        this.setTitle("Project Game Caro");
         this.add(initBtn_Exit());
         this.add(initBtn_Close());
-        this.add(playPanel);
- //       Image img = rdImage();
-//        playPanel.setImageBg(img);
-//        this.add(new HeaderPanel(img));
+        this.add(new MenuPanel());
+
 
 
     }
@@ -79,7 +77,7 @@ public class GUI extends JFrame  implements Constants{
     public ImageIcon getIcon(String name) {
         Image img;
         try {
-            img = ImageIO.read(getClass().getResource("/ImageHeader/" + name)).getScaledInstance(SIZE_BTN/2,SIZE_BTN/2,Image.SCALE_SMOOTH);
+            img = ImageIO.read(getClass().getResource("/ImageMenu/" + name)).getScaledInstance(SIZE_BTN/2,SIZE_BTN/2,Image.SCALE_SMOOTH);
             return new ImageIcon(img);
         } catch (IOException e) {
             System.out.println("Lỗi "+e);
